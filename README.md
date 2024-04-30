@@ -20,10 +20,10 @@ To get started with ABCDEducation Quiz App locally, follow these steps:
    git clone https://github.com/yourusername/abcdeducation.git
 
 2. **Install Dependencies:**
-   ```
-  cd abcdeducation
-  npm install
-  ```
+   ```bash
+   cd abcdeducation
+   npm install
+
 
 ## Technologies Used
 - **MongoDB:** NoSQL database for storing quiz data and user information.
