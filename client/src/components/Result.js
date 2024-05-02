@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from "react-redux";
+import { resetAllAction } from '../redux/question_reducer';
+import { resetResultAction } from '../redux/result_reducer';
+import { usePublishResult } from '../hooks/setResult';
+import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper';
+
 
 export default function Result() {
+    const dispatch = useDispatch()
+    const { questions : { queue ,answers}, result : { result}}  = useSelector(state => state)
+    useEffect(()=>{
+        console.log(earnPoints);
+    })
+    const totalPoints = queue.length * 10; 
+    const attempts = attempts_Number(result);
+
+    
+    const earnPoints = earnPoints_Number(result, answers, 10)
+    const flag = flagResult(totalPoints, earnPoints)
 
     function onRestart(){
-        console.log("restarted");
+        dispatch(resetAllAction)
+        dispatch(resetResultAction)
     }
 
     return (
