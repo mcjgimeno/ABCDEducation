@@ -2,12 +2,12 @@ export default[
     {
       "id": 1,
       "question": "What is the capital of France?",
-      "options": ["Paris", "London", "Rome", "Berlin"]
+      "options": [ "London","Paris", "Rome", "Berlin"]
     },
     {
       "id": 2,
       "question": "What is the largest planet in the solar system?",
-      "options": ["Jupiter", "Saturn", "Mars", "Earth"]
+      "options": [ "Saturn", "Mars","Jupiter", "Earth"]
     },
     {
       "id": 3,
@@ -15,3 +15,5 @@ export default[
       "options": ["Vatican City", "Monaco", "San Marino", "Liechtenstein"]
     }
   ]
+
+  export const answers = [1,2,0];

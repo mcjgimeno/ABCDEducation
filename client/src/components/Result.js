@@ -1,12 +1,33 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper';
+
+import { resetAllAction } from '../redux/question_reducer';
+import { resetResultAction } from '../redux/result_reducer';
+import { usePublishResult } from '../hooks/setResult';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Result() {
 
+    const dispatch = useDispatch()
+    const {questions: { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
+    useEffect(()=>{
+        console.log(earnPoints);
+    })
+
+    const totalPoints = queue.length * 10; 
+    const attempts = attempts_Number(result);
+    const earnPoints = earnPoints_Number(result, answers, 10)
+    const flag = flagResult(totalPoints, earnPoints)
+    
     function onRestart(){
-        console.log("restarted");
+        dispatch(resetAllAction())
+        dispatch(resetResultAction())
     }
+
+    
 
     return (
         <div className='h-screen w-screen flex flex-col justify-center items-center bg-white dark:bg-slate-800'>
@@ -19,35 +40,35 @@ export default function Result() {
                         <div className='label text-gray-600 dark:text-gray-300'>Username:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>abc</div>
+                        <div className='value bold text-gray-800 dark:text-gray-100'>{userId || ""}</div>
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
                         <div className='label text-gray-600 dark:text-gray-300'>Total Quiz Points:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>0</div>
+                        <div className='value bold text-gray-800 dark:text-gray-100'>{totalPoints || 0}</div>
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
                         <div className='label text-gray-600 dark:text-gray-300'>Total Questions:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>0</div>
+                        <div className='value bold text-gray-800 dark:text-gray-100'>{ queue.length || 0}</div>
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
                         <div className='label text-gray-600 dark:text-gray-300'>Total Attempts:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>0</div>
+                        <div className='value bold text-gray-800 dark:text-gray-100'>{attempts || 0}</div>
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
-                        <div className='label text-gray-600 dark:text-gray-300'>Total Earn Points:</div>
+                        <div className='label text-gray-600 dark:text-gray-300'>Total Earned Points:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>0</div>
+                        <div className='value bold text-gray-800 dark:text-gray-100'>{earnPoints || 0}</div>
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
@@ -62,7 +83,7 @@ export default function Result() {
                         <div className='label text-gray-600 dark:text-gray-300'>Quiz Result:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value text-gray-800 dark:text-gray-100'>Passed</div>
+                        <div className='value text-gray-800 dark:text-gray-100'>{flag ? "Passed" : "Failed"}</div>
                     </div>
                 </div>
 
