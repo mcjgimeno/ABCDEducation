@@ -11,16 +11,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Result() {
 
+
     const dispatch = useDispatch()
-    const {questions: { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
-    useEffect(()=>{
-        console.log(earnPoints);
-    })
+    const { questions : { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
 
     const totalPoints = queue.length * 10; 
     const attempts = attempts_Number(result);
     const earnPoints = earnPoints_Number(result, answers, 10)
     const flag = flagResult(totalPoints, earnPoints)
+
+    usePublishResult({ 
+        result, 
+        username : userId,
+        attempts,
+        points: earnPoints,
+        achived : flag ? "Passed" : "Failed" });
+    
     
     function onRestart(){
         dispatch(resetAllAction())
@@ -83,7 +89,7 @@ export default function Result() {
                         <div className='label text-gray-600 dark:text-gray-300'>Quiz Result:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
-                        <div className='value text-gray-800 dark:text-gray-100'>{flag ? "Passed" : "Failed"}</div>
+                        <div className={flag ? "font-bold text-green-500 dark:text-green-500" : "font-bold text-red-500 dark:text-red-500"}>{flag ? "Passed" : "Failed"}</div>
                     </div>
                 </div>
 

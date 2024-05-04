@@ -1,11 +1,20 @@
-import React, { useRef } from "react";
-import {Link} from 'react-router-dom';
+import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { setUserId } from '../redux/result_reducer'
 import splashImage from "../assets/splash.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+
 export default function Main() {
     const inputRef = useRef(null);
+    const dispatch = useDispatch()
+    function startQuiz(){
+        if(inputRef.current?.value){
+            dispatch(setUserId(inputRef.current?.value))
+        }
+    }
     return (
         <div className="h-screen w-screen flex flex-col justify-center items-center bg-white dark:bg-slate-800">
 
@@ -24,7 +33,7 @@ export default function Main() {
                 </div>
             </form>
             
-            <Link to={'quiz'}>
+            <Link to={'quiz'} onClick={startQuiz}>
             <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold mt-2 py-2 px-5 rounded-full text-xl">Continue</button>    
             </Link>
             
