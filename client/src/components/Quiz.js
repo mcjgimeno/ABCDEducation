@@ -13,7 +13,6 @@ import { Navigate } from 'react-router-dom'
 export default function Quiz() {
 
     const [check, setChecked] = useState(undefined)
-
     const result = useSelector(state => state.result.result);
     const { queue, trace } = useSelector(state => state.questions);
     const dispatch = useDispatch()

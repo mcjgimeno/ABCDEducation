@@ -16,4 +16,7 @@ router.route('/result')
         .post(controller.storeResult)
         .delete(controller.dropResult)
 
+router.route('/users/register') // more descriptive route for user registration
+        .post(controller.registerUser)        
+
 export default router;

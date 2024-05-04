@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export default function Main() {
     const inputRef = useRef(null);
     const dispatch = useDispatch()
+
     function startQuiz(){
         if(inputRef.current?.value){
             dispatch(setUserId(inputRef.current?.value))
@@ -33,7 +34,7 @@ export default function Main() {
                 </div>
             </form>
             
-            <Link to={'quiz'} onClick={startQuiz}>
+            <Link to={'quizes'} onClick={startQuiz}>
             <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold mt-2 py-2 px-5 rounded-full text-xl">Continue</button>    
             </Link>
             

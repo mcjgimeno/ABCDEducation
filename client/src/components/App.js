@@ -11,6 +11,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CheckUserExist } from '../helper/helper';
+import Quizes from './Quizes';
+import Login from './login';
 
 library.add(fas, far, fab)
 
@@ -22,14 +24,22 @@ const router = createBrowserRouter([
   },
 
   {
+    path : '/quizes',
+    element : <CheckUserExist><Quizes ></Quizes></CheckUserExist>
+  },
+  {
     path : '/quiz',
-    element : <CheckUserExist><Quiz /></CheckUserExist>
+    element : <CheckUserExist><Quiz/></CheckUserExist>
   },
 
   {
     path : '/result',
     element : <CheckUserExist><Result /></CheckUserExist>
   },
+  {
+    path : '/a/login',
+    element : <Login></Login>
+  }
   
 ])
 
