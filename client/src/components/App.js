@@ -12,41 +12,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CheckUserExist } from '../helper/helper';
 import Quizes from './Quizes';
-import Login from './login';
+import Login from './Login';
+import Dashboard from './dashboard/dashboard'
+
 
 library.add(fas, far, fab)
 
-/** react routes */
 const router = createBrowserRouter([
   {
-    path : '/',
-    element : <Main></Main>
-  },
-
-  {
-    path : '/quizes',
-    element : <CheckUserExist><Quizes ></Quizes></CheckUserExist>
+    path: '/',
+    element: <Main />,
   },
   {
-    path : '/quiz',
-    element : <CheckUserExist><Quiz/></CheckUserExist>
-  },
-
-  {
-    path : '/result',
-    element : <CheckUserExist><Result /></CheckUserExist>
+    path: '/quizes',
+    element: <CheckUserExist><Quizes /></CheckUserExist>,
   },
   {
-    path : '/a/login',
-    element : <Login></Login>
-  }
-  
-])
+    path: '/quiz',
+    element: <CheckUserExist><Quiz /></CheckUserExist>,
+  },
+  {
+    path: '/result',
+    element: <CheckUserExist><Result /></CheckUserExist>,
+  },
+  {
+    path: '/a/login',
+    element: <Login />,
+  },
+  {
+    path: '/a/dashboard',
+    element: <Dashboard />
+  },
+]);
 
 function App() {
-  return (
-    <RouterProvider router={router}/>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

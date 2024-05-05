@@ -19,4 +19,7 @@ router.route('/result')
 router.route('/users/register') // more descriptive route for user registration
         .post(controller.registerUser)        
 
+router.route('/users/login')
+        .post(controller.loginUser)        
+
 export default router;
