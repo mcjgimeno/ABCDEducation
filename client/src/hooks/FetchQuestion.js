@@ -24,7 +24,7 @@ export const useFetchQestion = () => {
                     dispatch(Action.startExamAction({ question }))
 
                 } else {
-                    throw new Error("No Question Avalibale");
+                    throw new Error("No Question Available");
                 }
             } catch (error) {
                 setGetData(prev => ({ ...prev, isLoading: false }));

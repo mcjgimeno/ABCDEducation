@@ -63,7 +63,6 @@ export default function Quiz() {
                         <FontAwesomeIcon icon="fa-solid fa-arrow-right" />
                     </button>
                 </div>
-                
             </div>
         </div>
 
