@@ -3,6 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Main from './Main';
 import Quiz from './Quiz';
 import Result from './Result';
+import Dashboard from './dashboard/dashboard'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CheckUserExist } from '../helper/helper';
 import Quizes from './Quizes';
 import Login from './Login';
-import Dashboard from './dashboard/dashboard'
+
 
 
 library.add(fas, far, fab)

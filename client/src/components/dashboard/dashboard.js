@@ -1,12 +1,19 @@
-import React from 'react';
-import withAuth from '../../helper/helper'
+import React from "react";
+import DefaultSidebar from "./sidebar";
 
 const Dashboard = () => {
   return (
-    <div className="h-screen w-screen flex flex-col justify-center items-center bg-white dark:bg-slate-800">
-      asdasdasd
+    <div className="flex h-screen">
+      <DefaultSidebar />
+      <div className="flex w-full flex-col">
+        <div className="bg-gray-100 p-4">Dashboard</div>
+        <div className="flex-1 p-4">
+          qeqweqeqw
+          <h1>Welcome to the Dashboard</h1>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default withAuth(Dashboard);
+export default Dashboard;
