@@ -9,7 +9,7 @@ import * as controller from '../controllers/controller.js';
 router.route('/questions')
         .get(controller.getQuestions) 
         .post(controller.insertQuestions) 
-        .delete(controller.dropQuestions) 
+        .delete(controller.deleteQuestion) 
 
 router.route('/result')
         .get(controller.getResult)

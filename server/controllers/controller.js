@@ -35,6 +35,32 @@ export async function insertQuestions(req, res) {
     res.status(500).json({ error: error.message });
   }
 
+  export async function deleteQuestion(req, res) {
+    try {
+      const questionId = req.params.id;
+      const filter = {}; // Define your filter, maybe you want to use a specific filter based on your requirements
+      const update = {
+        $pull: {
+          questions: { id: questionId }
+        }
+      };
+  
+      // No need for arrayFilters in this case as you are not using any positional operators
+      const options = {};
+  
+      const result = await Questions.updateOne(filter, update, options);
+  
+      if (result.modifiedCount === 0) {
+        return res.status(404).json({ error: "Question not found" });
+      }
+  
+      res.json({ msg: "Question deleted successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" }); // Complete the response in case of an error
+    }
+  }
+  
 export async function dropQuestions(req, res){
    try {
         await Questions.deleteMany();

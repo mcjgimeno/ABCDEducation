@@ -49,13 +49,14 @@ function withAuth(WrappedComponent) {
     return function EnhancedComponent(props) {
       const token = localStorage.getItem('token');
       const currentPath = window.location.pathname;
-      if (token && currentPath !== '/a/login') {
+      if (token && currentPath !== `${process.env.REACT_APP_SERVER_HOSTNAME}/a/login`) {
         return <WrappedComponent {...props} />;
+        
       }
-      return <Navigate to={'/'} />;
+      return <Navigate to={'/a/login'} />;
       
     };
   }
   
   export default withAuth;
-  
+

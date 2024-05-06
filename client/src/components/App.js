@@ -4,6 +4,8 @@ import Main from './Main';
 import Quiz from './Quiz';
 import Result from './Result';
 import Dashboard from './dashboard/dashboard'
+import ManQuiz from './dashboard/manQuiz'
+import ManAnimals from './dashboard/manAnimals';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +16,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CheckUserExist } from '../helper/helper';
 import Quizes from './Quizes';
 import Login from './Login';
+
+
 
 
 
@@ -43,6 +47,16 @@ const router = createBrowserRouter([
   {
     path: '/a/dashboard',
     element: <Dashboard />
+  },
+
+  {
+    path: '/a/quizes',
+    element: <ManQuiz />
+  },
+
+  {
+    path: '/a/quizes/animals',
+    element: <ManAnimals/>
   },
 ]);
 

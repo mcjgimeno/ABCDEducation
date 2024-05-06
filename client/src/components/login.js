@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLogin } from '../hooks/AuthUser';
-import withAuth from '../helper/helper';
+import withAuth from '../helper/helper'; 
+import { Navigate } from "react-router-dom";
 
 function Login() {
   const { handleSubmit, error } = useLogin();
   const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      window.location.href = '/a/dashboard';
+    }
+  }, []);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -72,4 +80,4 @@ function Login() {
   );
 };
 
-export default withAuth(Login)
+export default Login
