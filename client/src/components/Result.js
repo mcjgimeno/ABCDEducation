@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { attempts_Number, earnPoints_Number, flagResult } from '../helper/helper';
+import { earnPoints_Number, flagResult } from '../helper/helper';
 
 import { resetAllAction } from '../redux/question_reducer';
 import { resetResultAction } from '../redux/result_reducer';
@@ -16,14 +16,12 @@ export default function Result() {
     const { questions : { queue ,answers}, result : { result, userId}}  = useSelector(state => state)
 
     const totalPoints = queue.length * 10; 
-    const attempts = attempts_Number(result);
     const earnPoints = earnPoints_Number(result, answers, 10)
     const flag = flagResult(totalPoints, earnPoints)
 
     usePublishResult({ 
         result, 
         username : userId,
-        attempts,
         points: earnPoints,
         achived : flag ? "Passed" : "Failed" });
     
@@ -64,24 +62,10 @@ export default function Result() {
                     </div>
 
                     <div className="col-start-1 flex justify-self-start">
-                        <div className='label text-gray-600 dark:text-gray-300'>Total Attempts:</div>
-                    </div>
-                    <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>{attempts || 0}</div>
-                    </div>
-
-                    <div className="col-start-1 flex justify-self-start">
                         <div className='label text-gray-600 dark:text-gray-300'>Total Earned Points:</div>
                     </div>
                     <div className="col-start-2 flex justify-self-end">
                         <div className='value bold text-gray-800 dark:text-gray-100'>{earnPoints || 0}</div>
-                    </div>
-
-                    <div className="col-start-1 flex justify-self-start">
-                        <div className='label text-gray-600 dark:text-gray-300'>Attempts:</div>
-                    </div>
-                    <div className="col-start-2 flex justify-self-end">
-                        <div className='value bold text-gray-800 dark:text-gray-100'>0</div>
                     </div>
 
 

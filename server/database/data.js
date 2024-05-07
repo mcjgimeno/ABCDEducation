@@ -1,34 +1,34 @@
 export default [
   {
       id: 1,
-      question : "Javascript is an _______ language",
+      question : "What number comes after six (6)?",
       options : [
-          'Object-Oriented',
-          'Object-Based',
-          'Procedural',
+          'Seven (7)',
+          'Two (2)',
+          'Four (4)',
       ]
   },
   {
       id: 2,
-      question : "Following methods can be used to display data in some form using Javascript",
+      question : "What is 1 + 3 equals?",
       options : [
-          'document.write()',
-          'console.log()',
-          'window.alert()',
+          'Five (5)',
+          'Six (6)',
+          'Four (4)',
       ]
   },
   {
       id: 3,
-      question : "When an operator value is NULL, the typeof returned by the unary operator is:",
+      question : "You have nine (9) apples in your basket and you have given your friends three (3) apples to share. How many apples do you have left?",
       options : [
-          'Boolean',
-          'Undefined',
-          'Object',
+          'Twelve (12)',
+          'Six (6)',
+          'Ten (10)',
       ]
   },
   {
       id: 4,
-      question : "What does the toString() method return?",
+      question : "Which",
       options : [
           'Return Object',
           'Return String',

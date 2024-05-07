@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CheckUserExist } from '../helper/helper';
 import Quizes from './Quizes';
-import Login from './Login';
+import Login from './login';
 
 
 
